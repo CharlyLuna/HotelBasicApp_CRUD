@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const {
+  getRooms,
+  getRoom,
+  createRoom,
+  updateRoom,
+  deleteRoom,
+} = require("../controllers/rooms");
 
-router.get("/", (req, res) => {
-  const data = ["room1", "room2", "room3"];
-  res.send({ data });
-});
+router.get("/", getRooms);
+router.post("/", createRoom);
 
 module.exports = router;
