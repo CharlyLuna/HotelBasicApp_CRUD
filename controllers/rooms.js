@@ -10,9 +10,13 @@ const getRooms = async (req, res) => {
 // Create a new item in the database
 const createRoom = async (req, res) => {
   const { body } = req;
-  console.log(body);
-  const data = await roomsModel.create(body);
-  res.send({ data });
+
+  const data = await roomsModel.create(body).catch((err) => {
+    console.log(err);
+    res.send({ Message: "Error" });
+  });
+
+  if (data) res.send({ data });
 };
 // Update an item in the database
 const updateRoom = (req, res) => {
