@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {
   getRooms,
-  getRoom,
+  // getRoom,
   createRoom,
   updateRoom,
   deleteRoom,
@@ -10,5 +10,6 @@ const {
 
 router.get("/", getRooms);
 router.post("/", createRoom);
+router.put("/:_id", updateRoom);
 
 module.exports = router;

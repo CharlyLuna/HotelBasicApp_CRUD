@@ -6,7 +6,7 @@ const getRooms = async (req, res) => {
   res.send({ data });
 };
 // Obtain a single item from the database
-const getRoom = (req, res) => {};
+// const getRoom = (req, res) => {}; Maybe not needed
 // Create a new item in the database
 const createRoom = async (req, res) => {
   const { body } = req;
@@ -15,13 +15,23 @@ const createRoom = async (req, res) => {
   res.send({ data });
 };
 // Update an item in the database
-const updateRoom = (req, res) => {};
+const updateRoom = (req, res) => {
+  const { _id } = req.params;
+  console.log(_id);
+  roomsModel.findByIdAndUpdate(_id, req.body, { new: true }, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({ data });
+    }
+  });
+};
 // Delete an item from the database
 const deleteRoom = (req, res) => {};
 
 module.exports = {
   getRooms,
-  getRoom,
+  // getRoom,
   createRoom,
   updateRoom,
   deleteRoom,
