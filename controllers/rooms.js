@@ -20,15 +20,20 @@ const createRoom = async (req, res) => {
 };
 // Update an item in the database
 const updateRoom = (req, res) => {
-  const { _id } = req.params;
-  console.log(_id);
-  roomsModel.findByIdAndUpdate(_id, req.body, { new: true }, (err, data) => {
-    if (err) {
-      res.send(err);
-    } else {
-      res.send({ data });
-    }
-  });
+  try {
+    const { _id } = req.params;
+    console.log(_id);
+    roomsModel.findByIdAndUpdate(_id, req.body, { new: true }, (err, data) => {
+      if (err) {
+        res.status(500).send({ message: "Error updating room" });
+      } else {
+        res.send({ data });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.send({ Message: "Error" });
+  }
 };
 // Delete an item from the database
 const deleteRoom = (req, res) => {};

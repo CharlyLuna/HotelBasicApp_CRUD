@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { validatorCreateRoom } = require("../validators/rooms");
+const {
+  validatorCreateRoom,
+  validatorUpdateRoom,
+} = require("../validators/rooms");
 const {
   getRooms,
   // getRoom,
@@ -11,6 +14,6 @@ const {
 
 router.get("/", getRooms);
 router.post("/", validatorCreateRoom, createRoom);
-router.put("/:_id", updateRoom);
+router.put("/:_id", validatorUpdateRoom, updateRoom);
 
 module.exports = router;
