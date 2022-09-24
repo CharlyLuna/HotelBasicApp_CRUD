@@ -1,38 +1,47 @@
+const { matchedData, body } = require("express-validator");
 const { roomsModel } = require("../models");
+const handleHttpError = require("../utils/handleError");
 
 // Obtain list from the database
 const getRooms = async (req, res) => {
-  const data = await roomsModel.find({});
-  res.send({ data });
+  try {
+    const data = await roomsModel.find({});
+    res.send({ data });
+  } catch (err) {
+    handleHttpError(res, "Error getting rooms", 500);
+  }
 };
 // Obtain a single item from the database
-// const getRoom = (req, res) => {}; Maybe not needed
+const getRoom = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { _id } = req;
+    console.log(_id);
+    const data = await roomsModel.findById(_id);
+    res.send({ data });
+  } catch (err) {
+    handleHttpError(res, "Error getting room", 500);
+  }
+};
 // Create a new item in the database
 const createRoom = async (req, res) => {
-  const { body } = req;
-
-  const data = await roomsModel.create(body).catch((err) => {
-    console.log(err);
-    res.send({ Message: "Error" });
-  });
-
-  if (data) res.send({ data });
+  try {
+    const body = matchedData(req);
+    const data = await roomsModel.create(body);
+    res.send({ data });
+  } catch (err) {
+    handleHttpError(res, "Error creating room", 500);
+  }
 };
 // Update an item in the database
-const updateRoom = (req, res) => {
+const updateRoom = async (req, res) => {
   try {
-    const { _id } = req.params;
-    console.log(_id);
-    roomsModel.findByIdAndUpdate(_id, req.body, { new: true }, (err, data) => {
-      if (err) {
-        res.status(500).send({ message: "Error updating room" });
-      } else {
-        res.send({ data });
-      }
-    });
+    req = matchedData(req);
+    const { _id, ...body } = req;
+    const data = await roomsModel.findByIdAndUpdate(_id, body, { new: true });
+    res.send({ data });
   } catch (err) {
-    console.log(err);
-    res.send({ Message: "Error" });
+    handleHttpError(res, "Error updating room", 400);
   }
 };
 // Delete an item from the database
@@ -40,7 +49,7 @@ const deleteRoom = (req, res) => {};
 
 module.exports = {
   getRooms,
-  // getRoom,
+  getRoom,
   createRoom,
   updateRoom,
   deleteRoom,

@@ -20,6 +20,11 @@ const validatorCreateRoom = [
   (req, res, next) => validateResults(req, res, next),
 ];
 
+const validatorGetRoom = [
+  check("_id").exists().notEmpty().isMongoId(),
+  (req, res, next) => validateResults(req, res, next),
+];
+
 const validatorUpdateRoom = [
   check("roomNumber").exists().notEmpty({ min: 1, max: 4 }).isString(),
   check("roomType").exists().notEmpty({ min: 1, max: 20 }).isString(),
@@ -28,4 +33,4 @@ const validatorUpdateRoom = [
   (req, res, next) => validateResults(req, res, next),
 ];
 
-module.exports = { validatorCreateRoom, validatorUpdateRoom };
+module.exports = { validatorCreateRoom, validatorGetRoom, validatorUpdateRoom };
