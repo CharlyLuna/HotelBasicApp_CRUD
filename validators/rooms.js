@@ -8,8 +8,8 @@ const validatorCreateRoom = [
     .exists()
     .notEmpty({ min: 1, max: 4 })
     .isString()
-    .custom((value) => {
-      return roomsModel.findOne({ roomNumber: value }).then((room) => {
+    .custom(async (value) => {
+      return await roomsModel.findOne({ roomNumber: value }).then((room) => {
         if (room) {
           return Promise.reject("Room number already in use");
         }

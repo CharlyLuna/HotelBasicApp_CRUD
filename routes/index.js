@@ -8,7 +8,7 @@ const removeExtension = (filename) => {
   return filename.split(".").shift();
 };
 
-const a = fs.readdirSync(PATH_ROUTES).filter((file) => {
+fs.readdirSync(PATH_ROUTES).filter((file) => {
   const name = removeExtension(file);
   if (name !== "index") {
     console.log(`Loading route: ${name}`);

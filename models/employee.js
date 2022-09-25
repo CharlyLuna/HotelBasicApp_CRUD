@@ -24,8 +24,7 @@ const employeeSchema = new mongoose.Schema(
       required: true,
     },
     role: {
-      type: ["admin", "employee"],
-      default: "employee",
+      type: String,
       required: true,
     },
   },
