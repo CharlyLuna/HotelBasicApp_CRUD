@@ -45,7 +45,17 @@ const updateRoom = async (req, res) => {
   }
 };
 // Delete an item from the database
-const deleteRoom = (req, res) => {};
+const deleteRoom = async (req, res) => {
+  try {
+    req = matchedData(req);
+    const { _id } = req;
+    console.log(_id);
+    const data = await roomsModel.findOneAndDelete({ _id });
+    res.send({ data });
+  } catch (err) {
+    handleHttpError(res, "Error deleting room", 500);
+  }
+};
 
 module.exports = {
   getRooms,
