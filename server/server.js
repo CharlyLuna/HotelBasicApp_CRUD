@@ -3,7 +3,10 @@ const express = require("express");
 const dbConnect = require("../config/mongo");
 const app = express();
 
+app.set("view engine", "ejs");
+
 app.use(express.json());
+app.use(express.static("public"));
 
 const port = process.env.PORT || 3000;
 

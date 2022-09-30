@@ -12,34 +12,53 @@
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="text-bg-dark">
     <div class="container">
       <div class="row">
-        <div class="col-12">
-          <h1>HOTEL MIRAHERMOSA</h1>
+        <div class="col mt-4">
+          <h1 class="text-center">Hotel Mirahermosa</h1>
+          <!-- <img class="justify-content-center" src="/views/img/MH.jpg" width="1275" height="350" border-radius="50px"> -->
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <h2>Mi cuenta</h2>
+        <div class="col">
+          <h3>¡Hola, Eduardo!</h3>
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
-          <h2>Huespedes</h2>
-          <p>
-            Ir a la lista de huespedes
-          </p>
+        <div class="col-12 mt-3">
+          <a class="btn btn-block btn-primary" href="employee.html" role="button">Mi cuenta</a>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <h2>Empleados</h2>
-          <p>
-            Ir a la lista de empleados
-          </p>
-        </div>
       </div>
+      <div class="row text-dark m-5 justify-content-center">
+        <div class="col-md-5 col-ld-5 col-sm-12">
+          <div class="card m-3">
+            <img class="card-img-top" src="/views/img/guest.jpg" alt="Card image cap" width="600" height="400">
+            <div class="card-body">
+              <h5 class="card-title">Huéspedes</h5>
+              <p class="card-text">En esta sección se incluye todo lo relacionado con los huéspedes, podrás agendar una nueva reservación ó
+                consultar la lista de los todos huéspedes.
+              </p>
+              <a href="createGuest.html" class="btn btn-info">Nueva reservación</a>
+              <a href="guestList.html" class="btn btn-info">Ver listado de huéspedes</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-ld-5 col-sm-12">
+          <div class="card m-3">
+            <img class="card-img-top" src="/views/img/room.jpg" alt="Card image cap" width="600" height="400">
+            <div class="card-body">
+              <h5 class="card-title">Habitaciones</h5>
+              <p class="card-text">En esta sección se podrá ver todo el listado de habitaciones disponibles para su reserva, junto con el precio y
+                algunos otros detalles relacionados.
+              </p>
+              <a href="room.html" class="btn btn-info">Ver disponibilidad de habitaciones</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
