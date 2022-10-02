@@ -19,6 +19,35 @@
               <h3>¡Hola, Eduardo!</h3>
             </div>
         </div>
+        <div class="container">
+            <h5>Por favor completa la siguiente información:</h5>
+            <form action="/routes/employees.js" method="post">
+                <div class="col-md-6">
+                    <label for="ename" class="form-label">Nombre:</label>
+                    <input id="ename" name="ename" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="elastName" class="form-label">Tu(s) apellido(s):</label>
+                    <input id="elastName" name="elastName" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="eage" class="form-label">Tu eadad:</label>
+                    <input id="eage" name="eage" type="number" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="eemail" class="form-label">Tu correo electrónico:</label>
+                    <input id="eemail" name="eemail" type="email" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="epassword" class="form-label">Tu contraseña es:</label>
+                    <input id="epassword" name="epassword" type="password" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="erole" class="form-label">Rol que tienes:</label>
+                    <input id="erole" name="erole" type="text" class="form-control" required>
+                </div>
+            </form>
+        </div>
         <div class="row mt-5">
             <div class="col">
                 <a class="btn btn-block btn-primary"  className="saveAndUpload" href="home.html" role="button">Guardad y volver</a>

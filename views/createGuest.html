@@ -19,6 +19,48 @@
               <h3>Nueva reservación</h3>
             </div>
         </div>
+        <div class="container">
+            <h5>Introducir la información que se solicita</h5>
+            <form action="/routes/guests.js" method="post">
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input id="name" name="name" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastName" class="form-label">Apellido:</label>
+                    <input id="lastName" name="lastName" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Correo electrónico:</label>
+                    <input id="email" name="email" type="email" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="phoneNumber" class="form-label">Número de teléfono:</label>
+                    <input id="phoneNumber" name="phoneNumber" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="roomNumber" class="form-label">Número de  habitación:</label>
+                    <input id="roomNumber" name="roomNumber" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="checkInDate" class="form-label">Check In:</label>
+                    <input id="checkInDate" name="checkInDate" type="date" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="checkOutDate" class="form-label">Check Out:</label>
+                    <input id="checkOutDate" name="checkOutDate" type="date" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="numberOfGuests" class="form-label">Número de personas:</label>
+                    <input id="numberOfGuests" name="numberOfGuests" type="number" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="paymentMethod" class="form-label">Método de pago:</label>
+                    <input id="paymentMethod" name="paymentMethod" type="text" class="form-control" required>
+                </div>
+
+            </form>
+        </div>
         <div class="row mt-5">
             <div class="col">
                 <a class="btn btn-block btn-primary"  className="saveAndUpload" href="home.html" role="button">Guardad y volver</a>
