@@ -19,6 +19,50 @@
               <h3>Lista de empleados</h3>
             </div>
         </div>
+        <div class="div">
+          <table cellpadding="1" cellspacing="1">
+
+            <head>
+              <tr>
+                <th>
+                  Nombre
+                </th>
+                <th>
+                  Apellido(S)
+                </th>
+                <th>
+                  Edad
+                </th>
+                <th>
+                  Correo electrónico
+                </th>
+                <th>
+                  Contraseña
+                </th>
+                <th>
+                  Rol
+                </th>
+              </tr>
+            </head>
+        
+            <body>
+              <% for(let i=0; i < employee.length; i++) { %>
+              <tr>
+                <td><%= employee[i].id %></td>
+                <td><%= employee[i].name %></td>
+                <td><%= employee[i].lastName %></td>
+                <td><%= employee[i].email %></td>
+                <td><%= employee[i].password %></td>
+                <td><%= employee[i].role %></td>
+
+                <td><a href="<%= `deleteCareer/${employee[i]._id}` %>">Eliminar</a></td>
+                <td><a href="<%= `findByIdC/${employee[i]._id}` %>">Actualizar</a></td>
+        
+              </tr>
+              <% } %>
+            </body>
+          </table>
+        </div>
         <div class="row mt-5">
             <div class="col">
                 <a class="btn btn-block btn-primary"  className="saveAndUpload" href="home.html" role="button">Guardad y volver</a>

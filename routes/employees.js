@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   validatorCreateEmployee,
   validatorGetEmployee,
@@ -15,8 +16,12 @@ const {
 } = require("../controllers/employees");
 
 router.get("/", getEmployees);
+
+
 router.get("/:_id", validatorGetEmployee, getEmployee);
+
 router.post("/", validatorCreateEmployee, createEmployee);
+
 router.put(
   "/:_id",
   validatorGetEmployee,
