@@ -16,38 +16,31 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col">
-              <h3>Lista de empleados</h3>
+              <h3>Actualizar habitación</h3>
             </div>
         </div>
         <div class="div">
         <div class="container">
-            <form action="/routes/employees.js" method="post">
+            <h5>Editar la información necesaria</h5>
+            <form action="/routes/rooms.js" method="post">
                 <div class="col-md-6">
-                    <label for="ename" class="form-label">Nombre:</label>
-                    <input id="ename" name="ename" type="text" class="form-control" value="<%= `${employee._name}` %>" required>
+                    <label for="roomNumber" class="form-label">Número de habitación:</label>
+                    <input id="roomNumber" name="roomNumber" type="number" class="form-control" value="<%= `${room.roomNumber}` %>" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="elastName" class="form-label">Apellido(s):</label>
-                    <input id="elastName" name="elastName" type="text" class="form-control" value="<%= `${employee._lastName}` %>" required>
+                    <label for="roomType" class="form-label">Tipo de habitación:</label>
+                    <input id="roomType" name="roomType" type="text" class="form-control" value="<%= `${room.roomType}` %>" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="eage" class="form-label"> Edad:</label>
-                    <input id="eage" name="eage" type="number" class="form-control" value="<%= `${employee._age}` %>" required>
+                    <label for="roomPrice" class="form-label">Precio de la habitación:</label>
+                    <input id="roomPrice" name="roomPrice" type="number" class="form-control" value="<%= `${room.roomPrice}` %>" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="eemail" class="form-label">Correo electrónico:</label>
-                    <input id="eemail" name="eemail" type="email" class="form-control" value="<%= `${employee._email}` %>" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="epassword" class="form-label">Contraseña:</label>
-                    <input id="epassword" name="epassword" type="password" class="form-control" value="<%= `${employee._password}` %>" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="erole" class="form-label">Rol:</label>
-                    <input id="erole" name="erole" type="text" class="form-control" value="<%= `${employee._role}` %>" required>
+                    <label for="roomStatus" class="form-label">Estado de la habitación:</label>
+                    <input id="roomStatus" name="roomStatus" type="boolean" class="form-control" value="<%= `${room.roomStatus}` %>" required>
                 </div>
                 <input type="submit" value="Submit">
-              </form>
+            </form>
         </div>
         </div>
         <div class="row mt-5">
