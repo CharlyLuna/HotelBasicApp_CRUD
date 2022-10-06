@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Habitaciones</title>
+    <title>Mi Cuenta</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,8 +16,48 @@
     <div class="container">
         <div class="row mt-5">
             <div class="col">
-              <h3>Listado de habitaciones</h3>
+              <h3>Lista de Habitaciones</h3>
             </div>
+        </div>
+        <div class="div">
+          <table cellpadding="1" cellspacing="1">
+
+            <head>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Número de habitación
+                </th>
+                <th>
+                  Tipo de habitación
+                </th>
+                <th>
+                  Precio
+                </th>
+                <th>
+                  Estado actual
+                </th>
+              </tr>
+            </head>
+        
+            <body>
+              <% for(let i=0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].roomNumber %></td>
+                <td><%= data[i].roomType %></td>
+                <td><%= data[i].roomPrice %></td>
+                <td><%= data[i].roomStatus %></td>
+
+                <td><a href="<%= ` updateRoom/${data[i]._id}` %>">Eliminar</a></td>
+                <td><a href="<%= `rooms/${data[i]._id}` %>">Actualizar</a></td>
+        
+              </tr>
+              <% } %>
+            </body>
+          </table>
         </div>
         <div class="row mt-5">
             <div class="col">

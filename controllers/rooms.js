@@ -6,7 +6,7 @@ const handleHttpError = require("../utils/handleError");
 const getRooms = async (req, res) => {
   try {
     const data = await roomsModel.find({});
-    res.send({ data });
+    res.render("roomList", {data})
   } catch (err) {
     handleHttpError(res, "Error getting rooms", 500);
   }
