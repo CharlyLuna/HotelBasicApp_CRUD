@@ -46,17 +46,17 @@
             </head>
         
             <body>
-              <% for(let i=0; i < employee.length; i++) { %>
+              <% for(let i=0; i < data.length; i++) { %>
               <tr>
-                <td><%= employee[i].id %></td>
-                <td><%= employee[i].name %></td>
-                <td><%= employee[i].lastName %></td>
-                <td><%= employee[i].email %></td>
-                <td><%= employee[i].password %></td>
-                <td><%= employee[i].role %></td>
+                <td><%= data[i].id %></td>
+                <td><%= data[i].name %></td>
+                <td><%= data[i].lastName %></td>
+                <td><%= data[i].email %></td>
+                <td><%= data[i].password %></td>
+                <td><%= data[i].role %></td>
 
-                <td><a href="<%= `deleteCareer/${employee[i]._id}` %>">Eliminar</a></td>
-                <td><a href="<%= `findByIdC/${employee[i]._id}` %>">Actualizar</a></td>
+                <td><a href="<%= ` updateEmployee/${data[i]._id}` %>">Eliminar</a></td>
+                <td><a href="<%= `employees/${data[i]._id}` %>">Actualizar</a></td>
         
               </tr>
               <% } %>

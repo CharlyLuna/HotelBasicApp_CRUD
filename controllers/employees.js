@@ -6,7 +6,7 @@ const handleHttpError = require("../utils/handleError");
 const getEmployees = async (req, res) => {
   try {
     const data = await employeesModel.find({});
-    res.send({ data });
+    res.render("employeeList", {data})
   } catch (err) {
     handleHttpError(res, "Error getting employees", 500);
   }
@@ -18,7 +18,7 @@ const getEmployee = async (req, res) => {
     const { _id } = req;
     console.log(_id);
     const data = await employeesModel.findById(_id);
-    res.send({ data });
+    res.render("updateEmployee",{ data });
   } catch (err) {
     handleHttpError(res, "Error getting employee", 500);
   }
