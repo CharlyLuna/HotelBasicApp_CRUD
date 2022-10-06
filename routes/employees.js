@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
+
 const {
   validatorCreateEmployee,
   validatorGetEmployee,
   validatorUpdateEmployee,
 } = require("../validators/employees");
+
 const {
   getEmployees,
   getEmployee,
