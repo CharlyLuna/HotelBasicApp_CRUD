@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Actualizar la información del empleado</h1>
+
+    <form action="/updateEmployee" method="post">
+      <div class="col-md-6">
+        <label for="idC" class="form-label">Id de empleado:</label>
+        <input
+          id="idC"
+          name="idC"
+          type="text"
+          class="form-control"
+          value="<%= `${employee.idC}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="name" class="form-label">Nombre:</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="form-control"
+          value="<%= `${employee.name}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Apellido(s):</label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          class="form-control"
+          value="<%= `${employee.lastName}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="age" class="form-label"> Edad:</label>
+        <input
+          id="age"
+          name="age"
+          type="number"
+          class="form-control"
+          value="<%= `${employee.age}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Correo electrónico:</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control"
+          value="<%= `${employee.email}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="password" class="form-label">Contraseña:</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="form-control"
+          value="<%= `${employee.password}` %>"
+          required
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="role" class="form-label">Rol:</label>
+        <input
+          id="role"
+          name="role"
+          type="text"
+          class="form-control"
+          value="<%= `${employee.role}` %>"
+          required
+        />
+      </div>
+      <input type="submit" value="Submit" />
+    </form>
+    <div>
+      <br />
+      <br />
+      <br />
+      <a href="./main"> Back</a>
+    </div>
+  </body>
+</html>

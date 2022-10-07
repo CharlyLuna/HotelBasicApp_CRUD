@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Cuenta</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="text-bg-dark">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+              <h3>Lista de Habitaciones</h3>
+            </div>
+        </div>
+        <div class="div">
+          <table cellpadding="1" cellspacing="1">
+
+            <head>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Número de habitación
+                </th>
+                <th>
+                  Tipo de habitación
+                </th>
+                <th>
+                  Precio
+                </th>
+                <th>
+                  Estado actual
+                </th>
+              </tr>
+            </head>
+        
+            <body>
+              <% for(let i=0; i < rooms.length; i++) { %>
+              <tr>
+                <td><%= rooms[i].idR %></td>
+                <td><%= rooms[i].roomNumber %></td>
+                <td><%= rooms[i].roomType %></td>
+                <td><%= rooms[i].roomPrice %></td>
+                <td><%= rooms[i].roomStatus %></td>
+
+                <td><a href="<%= `deleteRoom/${rooms[i]._id}` %>">Eliminar</a> </td>
+                <td><a href="<%= `findByIdR/${rooms[i]._id}` %>">Actualizar</a> </td>
+        
+              </tr>
+              <% } %>
+            </body>
+          </table>
+        </div>
+        <div class="row mt-5">
+          <div class="col">
+              <a class="btn btn-block btn-primary"  className="discard" href="main" role="button">Volver al Inicio</a>
+          </div>
+      </div>
+    </div>
+   
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
