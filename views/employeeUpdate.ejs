@@ -5,13 +5,13 @@
 
     <form action="/updateEmployee" method="post">
       <div class="col-md-6">
-        <label for="idC" class="form-label">Id de empleado:</label>
+        <label for="idE" class="form-label">Id de empleado:</label>
         <input
-          id="idC"
-          name="idC"
+          id="idE"
+          name="idE"
           type="text"
           class="form-control"
-          value="<%= `${employee.idC}` %>"
+          value="<%= `${employee.idE}` %>"
           required
         />
       </div>
@@ -81,13 +81,9 @@
           required
         />
       </div>
+      <input type="text" id="objId" name="objId" value="<%= `${employee._id}` %>"><br><br>
       <input type="submit" value="Submit" />
     </form>
-    <div>
-      <br />
-      <br />
-      <br />
-      <a href="./main"> Back</a>
-    </div>
+    
   </body>
 </html>
