@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Outlet } from 'react-router-dom'
 import { UserAuthContext } from '../context/UserAuthContext'
 
 export const ProtectedRoute = ({ children }) => {
@@ -8,5 +8,5 @@ export const ProtectedRoute = ({ children }) => {
   if (!user) {
     return <Navigate to='/' />
   }
-  return children
+  return children || <Outlet />
 }
