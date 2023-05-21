@@ -11,7 +11,7 @@ export const ActionCard = ({ title, description, redirection }) => {
         <Card.Text>
           {description}
         </Card.Text>
-        <Button variant='light' onClick={() => navigate(redirection)}>Check {title}</Button>
+        <Button variant='dark' onClick={() => navigate(redirection)}>Check {title}</Button>
       </Card.Body>
     </Card>
   )
