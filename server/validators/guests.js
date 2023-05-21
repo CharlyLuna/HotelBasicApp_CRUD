@@ -17,7 +17,7 @@ const validatorCreateGuest = [
     }),
   check("name").exists().notEmpty({ min: 1, max: 20 }).isString(),
   check("lastName").exists().notEmpty({ min: 1, max: 20 }).isString(),
-  check("phoneNumber").exists().notEmpty({ min: 1, max: 20 }).isString(),
+  check("phoneNumber").exists().notEmpty({ min: 10, max: 10 }).isString(),
   check("roomNumber")
     .exists()
     .notEmpty({ min: 1, max: 20 })

@@ -70,10 +70,10 @@ const deleteGuest = async (req, res) => {
     req = matchedData(req);
     const { _id } = req;
     const guest = await guestsModel.findById(_id);
-    const data = await guestsModel.findOneAndDelete(guest);
+    const data = await guestsModel.findByIdAndDelete(_id);
     await roomsModel.findOneAndUpdate(
-      { roomNumber: guest.roomNumber },
-      { roomStatus: true }
+        { roomNumber: guest.roomNumber },
+        {$set: { roomStatus: true }}
     );
     res.send({ data });
   } catch (err) {
