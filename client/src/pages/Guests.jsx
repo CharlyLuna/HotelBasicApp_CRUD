@@ -38,8 +38,6 @@ export const Guests = () => {
     getGuests()
   }, [actionTriggered])
 
-  console.log(actionTriggered)
-
   return (
     <>
       <MainNavbar />
