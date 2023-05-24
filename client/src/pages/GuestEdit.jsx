@@ -7,12 +7,22 @@ import { useNavigate } from 'react-router-dom'
 
 export const GuestEdit = () => {
   const navigate = useNavigate()
-  const [guestInfo, setGuestInfo] = useState({})
+  const [guestInfo, setGuestInfo] = useState({
+    name: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    roomNumber: '',
+    checkInDate: '',
+    checkOutDate: '',
+    numberOfGuests: 1,
+    paymentMethod: ''
+  })
   const [error, setError] = useState('')
   const { editedGuest } = useContext(EditItemsContext)
 
   useEffect(() => {
-    setGuestInfo(editedGuest)
+    if (editedGuest) setGuestInfo(editedGuest)
   }, [editedGuest])
 
   const onInputChange = ({ target }) => {
@@ -24,6 +34,14 @@ export const GuestEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (editedGuest) {
+      updateGuest()
+    } else {
+      addGuest()
+    }
+  }
+
+  const updateGuest = async () => {
     try {
       const res = await fetch(`https://hotel-app-crud.onrender.com/api/guests/${guestInfo._id}`, {
         method: 'PUT',
@@ -34,6 +52,31 @@ export const GuestEdit = () => {
       })
       if (res.ok) {
         navigate('/guests')
+      } else {
+        const { errors } = await res.json()
+        setError(errors[0].msg)
+      }
+    } catch (e) {
+      setError(e.message)
+    }
+  }
+
+  const addGuest = async () => {
+    try {
+      const res = await fetch('https://hotel-app-crud.onrender.com/api/guests', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(guestInfo)
+      })
+      console.log(JSON.stringify(guestInfo))
+      if (res.ok) {
+        navigate('/guests')
+      } else {
+        const { errors } = await res.json()
+        console.log(errors)
+        setError(errors[0].msg)
       }
     } catch (e) {
       setError(e.message)
@@ -57,7 +100,8 @@ export const GuestEdit = () => {
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                   name='name'
-                  value={guestInfo.name ?? ''}
+                  value={guestInfo.name}
+                  maxLength={20}
                   type='text'
                   placeholder='Name'
                   onChange={onInputChange}
@@ -70,7 +114,8 @@ export const GuestEdit = () => {
                 <Form.Control
                   name='lastName'
                   type='text'
-                  value={guestInfo.lastName ?? ''}
+                  value={guestInfo.lastName}
+                  maxLength={20}
                   placeholder='last name'
                   onChange={onInputChange}
                 />
@@ -84,8 +129,9 @@ export const GuestEdit = () => {
                 <Form.Label>Phone number</Form.Label>
                 <Form.Control
                   name='phoneNumber'
-                  value={guestInfo.phoneNumber ?? ''}
+                  value={guestInfo.phoneNumber}
                   type='text'
+                  maxLength={10}
                   placeholder='Phone number'
                   onChange={onInputChange}
                 />
@@ -97,7 +143,8 @@ export const GuestEdit = () => {
                 <Form.Control
                   name='email'
                   type='email'
-                  value={guestInfo.email ?? ''}
+                  maxLength={20}
+                  value={guestInfo.email}
                   placeholder='Email'
                   onChange={onInputChange}
                 />
@@ -111,7 +158,7 @@ export const GuestEdit = () => {
                 <Form.Label>Check in</Form.Label>
                 <Form.Control
                   name='checkInDate'
-                  value={formatDate(guestInfo.checkInDate) ?? '2023-01-01'}
+                  value={editedGuest ? formatDate(guestInfo.checkInDate) : guestInfo.checkInDate}
                   type='date'
                   placeholder='Check in'
                   onChange={onInputChange}
@@ -124,7 +171,7 @@ export const GuestEdit = () => {
                 <Form.Control
                   name='checkOutDate'
                   type='date'
-                  value={formatDate(guestInfo.checkOutDate) ?? '2023-01-01'}
+                  value={editedGuest ? formatDate(guestInfo.checkOutDate) : guestInfo.checkOutDate}
                   placeholder='Check out'
                   onChange={onInputChange}
                 />
@@ -138,9 +185,10 @@ export const GuestEdit = () => {
                 <Form.Label>Room number</Form.Label>
                 <Form.Control
                   name='roomNumber'
-                  value={guestInfo.roomNumber ?? ''}
+                  value={guestInfo.roomNumber}
+                  maxLength={5}
                   type='text'
-                  placeholder='Check in'
+                  placeholder='Room number'
                   onChange={onInputChange}
                 />
               </Form.Group>
@@ -151,8 +199,7 @@ export const GuestEdit = () => {
                 <Form.Control
                   name='numberOfGuests'
                   type='number'
-                  value={guestInfo.numberOfGuests ?? 1}
-                  placeholder='Check out'
+                  value={guestInfo.numberOfGuests}
                   onChange={onInputChange}
                 />
               </Form.Group>
@@ -165,16 +212,27 @@ export const GuestEdit = () => {
               <Form.Control
                 name='paymentMethod'
                 type='text'
-                value={guestInfo.paymentMethod ?? ''}
-                placeholder='Check out'
+                value={guestInfo.paymentMethod}
+                maxLength={20}
+                placeholder='Payment method'
                 onChange={onInputChange}
               />
             </Form.Group>
           </Col>
           <div className='d-grid gap-2'>
-            <Button variant='dark' type='Submit'>
-              Update
-            </Button>
+            {
+              editedGuest !== null
+                ? (
+                  <Button variant='dark' type='Submit'>
+                    Update
+                  </Button>
+                  )
+                : (
+                  <Button variant='dark' type='Submit'>
+                    Add
+                  </Button>
+                  )
+            }
           </div>
         </Form>
       </div>

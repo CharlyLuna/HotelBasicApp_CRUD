@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { MainNavbar } from '../components/MainNavbar'
 import { DotSpinner } from '@uiball/loaders'
 import { GuestsTable } from '../components/GuestsTable'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
+import { EditItemsContext } from '../context/EditItemsContext'
 
 export const Guests = () => {
   const [guestsData, setGuestsData] = useState([])
   const [loading, setLoading] = useState(false)
   const [actionTriggered, setActionTriggered] = useState(false)
+  const { setEditedGuest } = useContext(EditItemsContext)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -38,6 +40,11 @@ export const Guests = () => {
     getGuests()
   }, [actionTriggered])
 
+  const handleAddNewGuest = () => {
+    navigate('/guestEdit')
+    setEditedGuest(null)
+  }
+
   return (
     <>
       <MainNavbar />
@@ -53,7 +60,7 @@ export const Guests = () => {
           : (
             <div>
               <GuestsTable guestsData={guestsData} setAction={setActionTriggered} />
-              <Button onClick={() => navigate('/guestEdit')} variant='dark'>Add a new guest</Button>
+              <Button onClick={handleAddNewGuest} variant='dark'>Add a new guest</Button>
             </div>
             )}
       </div>
