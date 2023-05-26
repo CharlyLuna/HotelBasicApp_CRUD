@@ -13,6 +13,7 @@ import { Employees } from './pages/Employees'
 import { useContext } from 'react'
 import { UserAuthContext } from './context/UserAuthContext'
 import { SpecialProtectedRoute } from './components/SpecialProtectedRoute'
+import { EmployeeEdit } from './pages/EmployeeEdit'
 
 function App () {
   return (
@@ -30,20 +31,15 @@ function App () {
                   <Route path='/guestEdit' element={<GuestEdit />} />
                   <Route path='/rooms' element={<Rooms />} />
                   <Route path='/roomEdit' element={<RoomEdit />} />
-                  {/* <Route path='/employees' element={<Employees />} /> */}
-                  <Route path='/employeeEdit' element={<RoomEdit />} />
+
                 </Route>
                 <Route
-                  path='employees'
-                  element={
-                    <SpecialProtectedRoute
-                      redirectPath='/home'
-                      isAllowed={['admin']}
-                    >
-                      <Employees />
-                    </SpecialProtectedRoute>
-                  }
-                />
+                  element={<SpecialProtectedRoute redirectPath='/home' isAllowed={['admin']} />}
+                >
+                  <Route path='/employees' element={<Employees />} />
+                  <Route path='/employeeEdit' element={<EmployeeEdit />} />
+                </Route>
+
               </Routes>
             </EditItemsProvider>
           </UserAuthProvider>
