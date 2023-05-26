@@ -24,8 +24,8 @@ export const GuestsTable = ({ guestsData, setAction }) => {
 
   if (guestsData === null || guestsData.length === 0) {
     return (
-      <div>
-        <h3 className='text-center'>No guests to display</h3>
+      <div className='text-center mb-4'>
+        <h3>No guests to display...</h3>
       </div>
     )
   }

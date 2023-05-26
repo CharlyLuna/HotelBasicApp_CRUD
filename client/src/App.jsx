@@ -10,8 +10,6 @@ import { EditItemsProvider } from './context/EditItemsProvider'
 import { Rooms } from './pages/Rooms'
 import { RoomEdit } from './pages/RoomEdit'
 import { Employees } from './pages/Employees'
-import { useContext } from 'react'
-import { UserAuthContext } from './context/UserAuthContext'
 import { SpecialProtectedRoute } from './components/SpecialProtectedRoute'
 import { EmployeeEdit } from './pages/EmployeeEdit'
 

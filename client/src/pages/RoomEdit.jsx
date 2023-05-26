@@ -42,10 +42,7 @@ export const RoomEdit = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          ...roomInfo,
-          roomStatus: Boolean(roomInfo.roomStatus)
-        })
+        body: JSON.stringify(roomInfo)
       })
       if (res.ok) {
         navigate('/rooms')
@@ -67,12 +64,10 @@ export const RoomEdit = () => {
         },
         body: JSON.stringify(roomInfo)
       })
-      console.log(JSON.stringify(roomInfo))
       if (res.ok) {
         navigate('/rooms')
       } else {
         const { errors } = await res.json()
-        console.log(errors)
         setError(errors?.[0].msg)
       }
     } catch (e) {

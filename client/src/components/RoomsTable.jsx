@@ -16,7 +16,7 @@ export const RoomsTable = ({ roomsData, setAction }) => {
   //   setAction(true)
   // }
 
-  const handleGuestUpdate = (room) => {
+  const handleRoomUpdate = (room) => {
     setEditedRoom(room)
     navigate('/roomEdit')
   }
@@ -29,7 +29,6 @@ export const RoomsTable = ({ roomsData, setAction }) => {
     }
   }
 
-  console.log(roomsData)
   return (
     <div className='table-responsive'>
       <table className='table'>
@@ -40,7 +39,6 @@ export const RoomsTable = ({ roomsData, setAction }) => {
             <th scope='col'>Room price</th>
             <th scope='col'>Room status</th>
             <th scope='col'>Room type</th>
-            {/* <th scope='col'>Update room</th> */}
           </tr>
         </thead>
         <tbody>
@@ -51,9 +49,6 @@ export const RoomsTable = ({ roomsData, setAction }) => {
               <td>{room.roomPrice}</td>
               <td>{handleRoomStatus(room.roomStatus)}</td>
               <td>{room.roomType}</td>
-              {/* <td>
-                <Button variant='dark' onClick={() => handleGuestUpdate(room)}>Update</Button>
-              </td> */}
             </tr>
           ))}
         </tbody>
