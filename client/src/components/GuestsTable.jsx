@@ -21,6 +21,15 @@ export const GuestsTable = ({ guestsData, setAction }) => {
     setEditedGuest(guest)
     navigate('/guestEdit')
   }
+
+  if (guestsData === null || guestsData.length === 0) {
+    return (
+      <div>
+        <h3 className='text-center'>No guests to display</h3>
+      </div>
+    )
+  }
+
   return (
     <div className='table-responsive'>
       <table className='table'>

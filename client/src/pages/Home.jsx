@@ -9,7 +9,7 @@ export const Home = () => {
   return (
     <>
       <MainNavbar />
-      <div>
+      <div className=''>
         <ActionCard
           title='Guests'
           description='Check and modify guests list'

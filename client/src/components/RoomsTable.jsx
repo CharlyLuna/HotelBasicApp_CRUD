@@ -2,20 +2,19 @@ import { useContext } from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { EditItemsContext } from '../context/EditItemsContext'
-import { formatDate } from '../utils/functions'
 
 export const RoomsTable = ({ roomsData, setAction }) => {
   const { setEditedRoom } = useContext(EditItemsContext)
   const navigate = useNavigate()
-  const handleGuestDelete = (room) => {
-    fetch(`https://hotel-app-crud.onrender.com/api/rooms/${room._id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    setAction(true)
-  }
+  // const handleGuestDelete = (room) => {
+  //   fetch(`https://hotel-app-crud.onrender.com/api/rooms/${room._id}`, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   setAction(true)
+  // }
 
   const handleGuestUpdate = (room) => {
     setEditedRoom(room)

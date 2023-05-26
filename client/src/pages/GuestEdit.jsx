@@ -70,12 +70,10 @@ export const GuestEdit = () => {
         },
         body: JSON.stringify(guestInfo)
       })
-      console.log(JSON.stringify(guestInfo))
       if (res.ok) {
         navigate('/guests')
       } else {
         const { errors } = await res.json()
-        console.log(errors)
         setError(errors[0].msg)
       }
     } catch (e) {
@@ -86,11 +84,8 @@ export const GuestEdit = () => {
   return (
     <>
       <MainNavbar />
-      <div className='row mt-4'>
-        <Button onClick={() => navigate('/guests')} variant='dark'>Back to guests</Button>
-      </div>
       <div className='p-4 box'>
-        <h2 className='mb-3'>Guest Edition</h2>
+        <h2 className='mb-3'>{editedGuest ? 'Guest Edition' : 'Guest Creation'}</h2>
         {error && <Alert variant='danger'>{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           {/* Guest full name */}
@@ -233,6 +228,9 @@ export const GuestEdit = () => {
                   </Button>
                   )
             }
+          </div>
+          <div className='d-grid mt-4'>
+            <Button onClick={() => navigate('/guests')} variant='primary'>Back to guests</Button>
           </div>
         </Form>
       </div>

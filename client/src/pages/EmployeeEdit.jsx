@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { MainNavbar } from '../components/MainNavbar'
 import { EditItemsContext } from '../context/EditItemsContext'
-import { formatDate } from '../utils/functions'
 import { useNavigate } from 'react-router-dom'
 
 export const EmployeeEdit = () => {

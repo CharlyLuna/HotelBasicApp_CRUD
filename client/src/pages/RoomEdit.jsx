@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Alert, Button, Col, Form, Row } from 'react-bootstrap'
 import { MainNavbar } from '../components/MainNavbar'
 import { EditItemsContext } from '../context/EditItemsContext'
-import { formatDate } from '../utils/functions'
 import { useNavigate } from 'react-router-dom'
 
 export const RoomEdit = () => {
@@ -10,7 +9,7 @@ export const RoomEdit = () => {
   const [roomInfo, setRoomInfo] = useState({
     roomNumber: '',
     roomPrice: '',
-    roomStatus: '',
+    roomStatus: true,
     roomType: ''
   })
   const [error, setError] = useState('')
@@ -43,7 +42,10 @@ export const RoomEdit = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(roomInfo)
+        body: JSON.stringify({
+          ...roomInfo,
+          roomStatus: Boolean(roomInfo.roomStatus)
+        })
       })
       if (res.ok) {
         navigate('/rooms')
@@ -71,7 +73,7 @@ export const RoomEdit = () => {
       } else {
         const { errors } = await res.json()
         console.log(errors)
-        setError(errors[0].msg)
+        setError(errors?.[0].msg)
       }
     } catch (e) {
       setError(e.message)
@@ -81,11 +83,8 @@ export const RoomEdit = () => {
   return (
     <>
       <MainNavbar />
-      <div className='row mt-4'>
-        <Button onClick={() => navigate('/rooms')} variant='dark'>Back to guests</Button>
-      </div>
       <div className='p-4 box'>
-        <h2 className='mb-3'>Room Edition</h2>
+        <h2 className='mb-3'>{editedRoom ? 'Room Edition' : 'Room Creation'}</h2>
         {error && <Alert variant='danger'>{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           {/* Room main info */}
@@ -122,14 +121,14 @@ export const RoomEdit = () => {
             <Col>
               <Form.Group className='mb-3' controlId='formRoomStatus'>
                 <Form.Label>Room status</Form.Label>
-                <Form.Control
+                <Form.Select
                   name='roomStatus'
                   value={roomInfo.roomStatus}
-                  type='text'
-                  maxLength={10}
-                  placeholder='Room status'
                   onChange={onInputChange}
-                />
+                >
+                  <option value='true'>Available</option>
+                  <option value='false'>Not available</option>
+                </Form.Select>
               </Form.Group>
             </Col>
             <Col>
@@ -159,6 +158,9 @@ export const RoomEdit = () => {
                   </Button>
                   )
             }
+          </div>
+          <div className='d-grid mt-4'>
+            <Button onClick={() => navigate('/rooms')} variant='primary'>Back to rooms</Button>
           </div>
         </Form>
       </div>
