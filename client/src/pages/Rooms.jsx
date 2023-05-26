@@ -45,8 +45,6 @@ export const Rooms = () => {
     setEditedRoom(null)
   }
 
-  console.log(roomsData)
-
   return (
     <>
       <MainNavbar />

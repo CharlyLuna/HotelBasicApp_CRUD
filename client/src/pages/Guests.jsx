@@ -49,7 +49,6 @@ export const Guests = () => {
       const searchResults = guestsData.filter((item) => item.name.toLowerCase()
         .includes(searchText.toLowerCase()) || item.lastName.toLowerCase()
         .includes(searchText.toLowerCase()))
-      console.log(searchText)
       setSearchResults(searchResults)
     }
   }, [debouncedSearch])
@@ -58,8 +57,6 @@ export const Guests = () => {
     navigate('/guestEdit')
     setEditedGuest(null)
   }
-
-  console.log(guestsData)
 
   return (
     <>
