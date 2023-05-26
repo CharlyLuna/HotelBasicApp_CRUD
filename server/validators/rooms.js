@@ -17,6 +17,7 @@ const validatorCreateRoom = [
     }),
   check("roomType").exists().notEmpty({ min: 1, max: 20 }).isString(),
   check("roomPrice").exists().notEmpty().isNumeric(),
+  check("roomStatus").exists().notEmpty().isBoolean(),
   (req, res, next) => validateResults(req, res, next),
 ];
 
