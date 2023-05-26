@@ -8,13 +8,19 @@ import {
   signInWithPopup
 } from 'firebase/auth'
 import { UserAuthContext } from './UserAuthContext'
-import { auth } from '../firebase'
+import { app, auth } from '../firebase'
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 
 export const UserAuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
+  const [rol, setRol] = useState(null)
+  const fireStore = getFirestore(app)
 
-  const signUp = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password)
+  const signUp = async (email, password) => {
+    const userInfo = await createUserWithEmailAndPassword(auth, email, password)
+    const { uid } = userInfo.user
+    const userRef = doc(fireStore, 'usuarios', uid)
+    return setDoc(userRef, { correo: email, rol: 'employee' })
   }
   const logIn = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
@@ -33,6 +39,15 @@ export const UserAuthProvider = ({ children }) => {
   useEffect(() => {
     const status = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
+      if (currentUser) {
+        const userRef = doc(fireStore, 'usuarios', currentUser.uid)
+        getDoc(userRef).then((doc) => {
+          if (doc.exists()) {
+            setRol(doc.data().rol)
+          }
+        }
+        )
+      }
     })
 
     return () => {
@@ -41,7 +56,7 @@ export const UserAuthProvider = ({ children }) => {
   }, [])
 
   return (
-    <UserAuthContext.Provider value={{ signUp, logIn, logOut, googleSignIn, user }}>
+    <UserAuthContext.Provider value={{ signUp, logIn, logOut, googleSignIn, user, rol }}>
       {children}
     </UserAuthContext.Provider>
   )
