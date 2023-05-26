@@ -1,12 +1,8 @@
-import { useContext } from 'react'
 import { ActionCard } from '../components/ActionCard'
 import { MainNavbar } from '../components/MainNavbar'
-import { UserAuthContext } from '../context/UserAuthContext'
 import { Row } from 'react-bootstrap'
 
 export const Home = () => {
-  const { rol } = useContext(UserAuthContext)
-
   return (
     <>
       <MainNavbar />

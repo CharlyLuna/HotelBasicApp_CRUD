@@ -1,6 +1,6 @@
 import { Form, Button, Alert } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import GoogleButton from 'react-google-button'
+// import GoogleButton from 'react-google-button'
 import { useContext, useState } from 'react'
 import { UserAuthContext } from '../context/UserAuthContext'
 
@@ -8,7 +8,7 @@ export const Login = () => {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const { logIn, googleSignIn } = useContext(UserAuthContext)
+  const { logIn } = useContext(UserAuthContext)
 
   const navigate = useNavigate()
 
@@ -31,15 +31,15 @@ export const Login = () => {
     }
   }
 
-  const handleGoogleSignIn = async (e) => {
-    e.preventDefault()
-    try {
-      await googleSignIn()
-      navigate('/home')
-    } catch (e) {
-      setError(e.message)
-    }
-  }
+  // const handleGoogleSignIn = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     await googleSignIn()
+  //     navigate('/home')
+  //   } catch (e) {
+  //     setError(e.message)
+  //   }
+  // }
 
   return (
     <>
@@ -69,14 +69,14 @@ export const Login = () => {
             </Button>
           </div>
         </Form>
-        <hr />
-        <div>
+        {/* <hr /> */}
+        {/* <div>
           <GoogleButton
             className='g-btn'
             type='dark'
             onClick={handleGoogleSignIn}
           />
-        </div>
+        </div> */}
       </div>
       <div className='p-4 box mt-3 text-center'>
         Don't have an account? <Link to='/signup'>Sign up</Link>
