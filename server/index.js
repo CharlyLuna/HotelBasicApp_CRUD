@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors')
 
 app.use(cors({
-  origin: ['http://localhost:5173','https://hotel-app-crud.netlify.app/']
+  origin: '*'
 }))
 
 app.use(express.json());
